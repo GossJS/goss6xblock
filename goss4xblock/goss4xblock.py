@@ -7,14 +7,12 @@ from xblock.core import XBlock
 from xblock.scorable import ScorableXBlockMixin, Score
 
 
-from xblock.fields import Integer, Scope
+from xblock.fields import Integer, Scope, UNSET
 from django.utils.safestring import SafeText
 import textwrap
 import urllib
 import json
 import random
-
-#has_score = True
 
 @XBlock.wants('user')
 class Goss4XBlock(ScorableXBlockMixin, XBlock):
@@ -24,13 +22,11 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
 
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
-    has_score = True
-    #has_score = True
     #package = __package__
     always_recalculate_grades = True
     
     score2 = Integer(
-        default=0, scope=Scope.user_state,
+        default=UNSET, scope=Scope.user_state,
         help="An indicator of success",
     )
 
@@ -43,14 +39,15 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
         """
         Returns True if the user has made a submission.
         """
-        return self.fields['raw_earned'].is_set_on(self) or self.fields['grade'].is_set_on(self)
+        return self.fields['score2'].is_set_on(self)
 
     def max_score(self):  # pylint: disable=no-self-use
         """
-        Return the problem's max score, which for DnDv2 always equals 1.
+        Return the problem's max score
         Required by the grading system in the LMS.
         """
-        return 1
+        return 100
+    
     def set_score(self, score):
         """
         Sets the score on this block.
@@ -59,22 +56,21 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
         always be 1).
         """
         #assert score.raw_possible == self.max_score()
-        self.raw_earned = score.raw_earned
+        self.score2 = score.raw_earned
 
     def get_score(self):
         """
         Return the problem's current score as raw values.
         """
         
-        self.raw_earned = self.score
-        return Score(self.raw_earned, self.max_score())
+        return Score(self.score2, self.max_score())
 
     def calculate_score(self):
         """
         Returns a newly-calculated raw score on the problem for the learner
         based on the learner's current state.
         """
-        return Score(self.score, self.max_score())
+        return Score(self.score2, self.max_score())
 
 
     # TO-DO: change this view to display your data your own way.
@@ -123,10 +119,7 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
         else:
              self.score2 = 0
 
-        event_data = {'value': self.score2 / 100, 'max_value': 1.0}
-        self.runtime.publish(self, 'grade', event_data)
-        self._publish_grade(Score(self.raw_earned, self.max_score()))
-        self.runtime.publish(self, "progress", {})
+        self._publish_grade(Score(self.score2, self.max_score()))
 
         url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------"
         urllib.urlopen(url+'score --- published')        
