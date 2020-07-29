@@ -1,6 +1,6 @@
 /* CSS for Goss1XBlock */
 
-.goss4xblock_block .score {
+.goss6xblock_block .score {
     font-weight: bold;
     font-size: 20pt;
 }
@@ -19,7 +19,7 @@
 }
 
 
-.goss4xblock_block p {
+.goss6xblock_block p {
     cursor: pointer;
     background: silver!important;
 }

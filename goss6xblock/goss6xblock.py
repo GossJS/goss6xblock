@@ -15,7 +15,7 @@ import json
 import random
 
 @XBlock.wants('user')
-class Goss4XBlock(ScorableXBlockMixin, XBlock):
+class Goss6XBlock(ScorableXBlockMixin, XBlock):
     """
     XBlock checks if a certain URL returns what is expected 
     """
@@ -88,7 +88,7 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
         data = json.loads(response.read())
         CHECK = data['message']
 
-        html = self.resource_string("static/html/goss4xblock.html")
+        html = self.resource_string("static/html/goss6xblock.html")
         frag = Fragment(html.format(self=self))
 
         res = textwrap.dedent("""
@@ -101,9 +101,9 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
         """).format(CURRENT, XURL, CHECK)
         frag.add_content(SafeText(res))
 
-        frag.add_css(self.resource_string("static/css/goss4xblock.css"))
-        frag.add_javascript(self.resource_string("static/js/src/goss4xblock.js"))
-        frag.initialize_js('Goss4XBlock')
+        frag.add_css(self.resource_string("static/css/goss6xblock.css"))
+        frag.add_javascript(self.resource_string("static/js/src/goss6xblock.js"))
+        frag.initialize_js('Goss6XBlock')
         return frag
 
     # TO-DO: change this handler to perform your own actions.  You may need more
@@ -131,10 +131,10 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("Goss4XBlock",
+            ("Goss6XBlock",
              """<problem/>
              """),
-            ("Multiple Goss4XBlock",
+            ("Multiple Goss6XBlock",
              """<vertical_demo>
                 <goss2xblock/>
                 <goss2xblock/>

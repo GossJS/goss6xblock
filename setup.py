@@ -1,4 +1,4 @@
-"""Setup for goss4xblock XBlock."""
+"""Setup for goss6xblock XBlock."""
 
 from __future__ import absolute_import
 
@@ -24,20 +24,20 @@ def package_data(pkg, roots):
 
 
 setup(
-    name='goss4xblock-xblock',
+    name='goss6xblock-xblock',
     version='0.1',
-    description='goss4xblock XBlock',   # TODO: write a better description.
+    description='goss6xblock XBlock',   # TODO: write a better description.
     license='UNKNOWN',          # TODO: choose a license: 'AGPL v3' and 'Apache 2.0' are popular.
     packages=[
-        'goss4xblock',
+        'goss6xblock',
     ],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'goss4xblock = goss4xblock:Goss4XBlock',
+            'goss6xblock = goss6xblock:Goss6XBlock',
         ]
     },
-    package_data=package_data("goss4xblock", ["static", "public"]),
+    package_data=package_data("goss6xblock", ["static", "public"]),
 )

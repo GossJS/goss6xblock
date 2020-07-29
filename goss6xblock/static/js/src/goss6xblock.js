@@ -1,5 +1,5 @@
-/* Javascript for Goss4XBlock. */
-function Goss4XBlock(runtime, element) {
+/* Javascript for Goss6XBlock. */
+function Goss6XBlock(runtime, element) {
 
     function updateScore(result) {
         $('.score', element).text(result.score);

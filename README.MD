@@ -19,4 +19,4 @@ Course > Эксперимент > Работающий эксблок > gossxblo
 
 
 
-# goss4xblock
+# goss6xblock
