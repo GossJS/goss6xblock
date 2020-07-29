@@ -121,7 +121,7 @@ class Goss4XBlock(ScorableXBlockMixin, XBlock):
 
         self._publish_grade(Score(self.score2, self.max_score()))
 
-        url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------"
+        url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------" + str(self.score2) + "---" + str(self.raw_earned)
         urllib.urlopen(url+'score --- published')        
         return {"score": self.score2}
 
