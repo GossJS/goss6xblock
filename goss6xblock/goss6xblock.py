@@ -26,7 +26,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
     always_recalculate_grades = True
     
     score2 = Integer(
-        default=UNSET, scope=Scope.user_state,
+        default=0, scope=Scope.user_state,
         help="An indicator of success",
     )
 
@@ -46,7 +46,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         Return the problem's max score
         Required by the grading system in the LMS.
         """
-        return 100
+        return 1
     
     def set_score(self, score):
         """
@@ -56,21 +56,22 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         always be 1).
         """
         #assert score.raw_possible == self.max_score()
-        self.score2 = score.raw_earned
+        #score.raw_earned = 1/2
+        self.score2 = 1 #score.raw_earned
 
     def get_score(self):
         """
         Return the problem's current score as raw values.
         """
         
-        return Score(self.score2, self.max_score())
+        return Score(1, self.max_score())
 
     def calculate_score(self):
         """
         Returns a newly-calculated raw score on the problem for the learner
         based on the learner's current state.
         """
-        return Score(self.score2, self.max_score())
+        return Score(1, self.max_score())
 
 
     # TO-DO: change this view to display your data your own way.
@@ -115,12 +116,12 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         """
         # indicator is now 100...
         if data['key'] == 'hundred':
-             self.score2 = 100
+             self.score2 = 1
         else:
              self.score2 = 0
 
         
-        url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------" + str(self.score2) + "---" + str(self.raw_earned)
+        url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------" + str(self.score2)
         urllib.urlopen(url+'score --- published')  
 
         self._publish_grade(Score(self.score2, self.max_score()))
