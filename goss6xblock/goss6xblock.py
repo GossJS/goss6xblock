@@ -10,7 +10,7 @@ from xblock.scorable import ScorableXBlockMixin, Score
 from xblock.fields import Integer, Scope, UNSET
 from django.utils.safestring import SafeText
 import textwrap
-import urllib
+import urllib.request
 import json
 import random
 
@@ -85,7 +85,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         CURRENT = xb_user.opt_attrs.get('edx-platform.username')
 
         XURL = 'https://fork.kodaktor.ru/testxblock2'
-        response = urllib.urlopen(XURL)
+        response = urllib.request.urlopen(XURL)
         data = json.loads(response.read())
         CHECK = data['message']
 
@@ -122,7 +122,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
 
         
         url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------" + str(self.score2)
-        urllib.urlopen(url+'score --- published')  
+        urllib.request.urlopen(url+'score --- published')  
 
         self._publish_grade(Score(self.score2, self.max_score()))
 
@@ -146,4 +146,3 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
                 </vertical_demo>
              """),
         ]
-
