@@ -1,1 +1,1 @@
-from .goss8xblock import goss8XBlock
+from .goss9xblock import Goss9XBlock

@@ -1,4 +1,4 @@
-.goss8xblock_block .score {
+.gossxblock_block .score {
     font-weight: bold;
     font-size: 20pt;
 }
@@ -17,7 +17,7 @@
 }
 
 
-.goss6xblock_block p {
+.gossxblock_block p {
     cursor: pointer;
     background: silver!important;
 }
