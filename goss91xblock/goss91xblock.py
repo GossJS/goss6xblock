@@ -15,7 +15,7 @@ import json
 import random
 
 @XBlock.wants('user')
-class Goss9XBlock(ScorableXBlockMixin, XBlock):
+class Goss91XBlock(ScorableXBlockMixin, XBlock):
     """
     XBlock checks if a certain URL returns what is expected 
     """
@@ -105,8 +105,8 @@ class Goss9XBlock(ScorableXBlockMixin, XBlock):
         frag.add_content(SafeText(res))
 
         frag.add_css(self.resource_string("static/css/gossxblock.css"))
-        frag.add_javascript(self.resource_string("static/js/src/goss9xblock.js"))
-        frag.initialize_js('Goss9XBlock')
+        frag.add_javascript(self.resource_string("static/js/src/goss91xblock.js"))
+        frag.initialize_js('Goss91XBlock')
         return frag
 
     # TO-DO: change this handler to perform your own actions.  You may need more
@@ -123,8 +123,6 @@ class Goss9XBlock(ScorableXBlockMixin, XBlock):
              self.score2 = 0
 
         
-        url = "https://fork.kodaktor.ru/publog3?EDXEDX-9---------" + str(self.score2)
-        urllib.request.urlopen(url+'score --- published')  
 
         self._publish_grade(Score(self.score2, self.max_score()))
 
@@ -137,14 +135,14 @@ class Goss9XBlock(ScorableXBlockMixin, XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("goss9XBlock",
+            ("goss91XBlock",
              """<problem/>
              """),
-            ("Multiple goss9XBlock",
+            ("Multiple goss91XBlock",
              """<vertical_demo>
-                <goss9xblock/>
-                <goss9xblock/>
-                <goss9xblock/>
+                <goss91xblock/>
+                <goss91xblock/>
+                <goss91xblock/>
                 </vertical_demo>
              """),
         ]

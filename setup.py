@@ -22,20 +22,20 @@ def package_data(pkg, roots):
 
 
 setup(
-    name='goss9xblock-xblock',
+    name='goss91xblock-xblock',
     version='0.1',
     description='goss  XBlock',   # TODO: write a better description.
     license='UNKNOWN',          # TODO: choose a license: 'AGPL v3' and 'Apache 2.0' are popular.
     packages=[
-        'goss9xblock',
+        'goss91xblock',
     ],
     install_requires=[
         'XBlock',
     ],
     entry_points={
         'xblock.v1': [
-            'goss9xblock = goss9xblock:Goss9XBlock',
+            'goss91xblock = goss91xblock:Goss91XBlock',
         ]
     },
-    package_data=package_data("goss9xblock", ["static", "public"]),
+    package_data=package_data("goss91xblock", ["static", "public"]),
 )
