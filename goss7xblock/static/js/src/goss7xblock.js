@@ -1,5 +1,5 @@
-/* Javascript for Goss6XBlock. */
-function Goss6XBlock(runtime, element) {
+/* Javascript for Goss7XBlock. */
+function Goss7XBlock(runtime, element) {
 
     function updateScore(result) {
         $('.score', element).text(result.score);
@@ -43,7 +43,7 @@ function Goss6XBlock(runtime, element) {
 
 
     $(function ($) {
-        console.log('*3***********');
+        console.log('*7***********');
         console.log(element);
         /* Here's where you'd do things on page load. */
     });
