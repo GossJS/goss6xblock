@@ -15,7 +15,7 @@ import json
 import random
 
 @XBlock.wants('user')
-class Goss6XBlock(ScorableXBlockMixin, XBlock):
+class Goss7XBlock(ScorableXBlockMixin, XBlock):
     """
     XBlock checks if a certain URL returns what is expected 
     """
@@ -77,7 +77,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
     # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
         """
-        The primary view of the Goss2XBlock, shown to students
+        The primary view of the Goss7XBlock, shown to students
         when viewing courses.
         """
         user_service = self.runtime.service(self, 'user')
@@ -89,7 +89,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         data = json.loads(response.read())
         CHECK = data['message']
 
-        html = self.resource_string("static/html/goss6xblock.html")
+        html = self.resource_string("static/html/goss7xblock.html")
         frag = Fragment(html.format(self=self))
 
         res = textwrap.dedent("""
@@ -102,9 +102,9 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
         """).format(CURRENT, XURL, CHECK)
         frag.add_content(SafeText(res))
 
-        frag.add_css(self.resource_string("static/css/goss6xblock.css"))
-        frag.add_javascript(self.resource_string("static/js/src/goss6xblock.js"))
-        frag.initialize_js('Goss6XBlock')
+        frag.add_css(self.resource_string("static/css/goss7xblock.css"))
+        frag.add_javascript(self.resource_string("static/js/src/goss7xblock.js"))
+        frag.initialize_js('Goss7XBlock')
         return frag
 
     # TO-DO: change this handler to perform your own actions.  You may need more
@@ -121,7 +121,7 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
              self.score2 = 0
 
         
-        url = "https://fork.kodaktor.ru/publog3?EDXEDX-4---------" + str(self.score2)
+        url = "https://fork.kodaktor.ru/publog3?EDXEDX-7---------" + str(self.score2)
         urllib.request.urlopen(url+'score --- published')  
 
         self._publish_grade(Score(self.score2, self.max_score()))
@@ -135,14 +135,14 @@ class Goss6XBlock(ScorableXBlockMixin, XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("Goss6XBlock",
+            ("Goss7XBlock",
              """<problem/>
              """),
-            ("Multiple Goss6XBlock",
+            ("Multiple Goss7XBlock",
              """<vertical_demo>
-                <goss2xblock/>
-                <goss2xblock/>
-                <goss2xblock/>
+                <goss7xblock/>
+                <goss7xblock/>
+                <goss7xblock/>
                 </vertical_demo>
              """),
         ]
