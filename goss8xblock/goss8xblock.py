@@ -86,7 +86,9 @@ class goss8XBlock(ScorableXBlockMixin, XBlock):
 
         XURL = 'https://fork.kodaktor.ru/testxblock2'
         response = urllib.request.urlopen(XURL)
-        data = json.loads(response.read())
+        www = response.read()
+        encoding = response.info().get_content_charset('utf-8')
+        data = json.loads(www.decode(encoding))
         CHECK = data['message']
 
         html = self.resource_string("static/html/goss8xblock.html")
