@@ -15,7 +15,7 @@ import json
 import random
 
 @XBlock.wants('user')
-class Goss7XBlock(ScorableXBlockMixin, XBlock):
+class goss8XBlock(ScorableXBlockMixin, XBlock):
     """
     XBlock checks if a certain URL returns what is expected 
     """
@@ -77,7 +77,7 @@ class Goss7XBlock(ScorableXBlockMixin, XBlock):
     # TO-DO: change this view to display your data your own way.
     def student_view(self, context=None):
         """
-        The primary view of the Goss7XBlock, shown to students
+        The primary view of the goss8XBlock, shown to students
         when viewing courses.
         """
         user_service = self.runtime.service(self, 'user')
@@ -89,7 +89,7 @@ class Goss7XBlock(ScorableXBlockMixin, XBlock):
         data = json.loads(response.read())
         CHECK = data['message']
 
-        html = self.resource_string("static/html/goss7xblock.html")
+        html = self.resource_string("static/html/goss8xblock.html")
         frag = Fragment(html.format(self=self))
 
         res = textwrap.dedent("""
@@ -102,9 +102,9 @@ class Goss7XBlock(ScorableXBlockMixin, XBlock):
         """).format(CURRENT, XURL, CHECK)
         frag.add_content(SafeText(res))
 
-        frag.add_css(self.resource_string("static/css/goss7xblock.css"))
-        frag.add_javascript(self.resource_string("static/js/src/goss7xblock.js"))
-        frag.initialize_js('Goss7XBlock')
+        frag.add_css(self.resource_string("static/css/goss8xblock.css"))
+        frag.add_javascript(self.resource_string("static/js/src/goss8xblock.js"))
+        frag.initialize_js('goss8XBlock')
         return frag
 
     # TO-DO: change this handler to perform your own actions.  You may need more
@@ -135,14 +135,14 @@ class Goss7XBlock(ScorableXBlockMixin, XBlock):
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
         return [
-            ("Goss7XBlock",
+            ("goss8XBlock",
              """<problem/>
              """),
-            ("Multiple Goss7XBlock",
+            ("Multiple goss8XBlock",
              """<vertical_demo>
-                <goss7xblock/>
-                <goss7xblock/>
-                <goss7xblock/>
+                <goss8xblock/>
+                <goss8xblock/>
+                <goss8xblock/>
                 </vertical_demo>
              """),
         ]

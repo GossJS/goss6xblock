@@ -1,5 +1,5 @@
-/* Javascript for Goss7XBlock. */
-function Goss7XBlock(runtime, element) {
+/* Javascript for goss8XBlock. */
+function goss8XBlock(runtime, element) {
 
     function updateScore(result) {
         $('.score', element).text(result.score);
