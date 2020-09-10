@@ -11,4 +11,6 @@
 
  
 
-###### TODO: на данный момент это не «проблема», а просто эксблок, и поэтому выставленный балл не попадает в журнал отметок.
+https://edx.goss.spb.ru/courses/course-v1:edX+DemoX+Demo_Course/progress
+
+Practice scores
